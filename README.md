@@ -85,6 +85,11 @@ These Monads can be composed together to do some really useful things:
     $doubled = $newMonad->bind(function($value) { return 2 * $value; });
     var_dump($doubled->extract());
     // Prints array(2, 4, 6, null, 8)
+    
+There also exist helper constants on each of the monads to get a callback to the `unit` method:
+
+    $newMonad = $monad->bind(Maybe::unit);
+    // Does the same thing as above 
 
 Or, what if you want to deal with multi-dimensional arrays?
 
@@ -94,11 +99,6 @@ Or, what if you want to deal with multi-dimensional arrays?
     $doubled = $newMonad->bind(function($value) { return 2 * $value; });
     var_dump($doubled->extract());
     // Prints array(array(2, 4), array(6, 8), array(10, 12))
-
-There also exist helper constants on each of the monads to get a callback to the `unit` method:
-
-    $newMonad = $monad->bind(Maybe::unit);
-    // Does the same thing as above 
 
 Real World Example
 ==================
